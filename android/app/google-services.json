@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "591831100692",
+    "project_id": "learningfirebasesach",
+    "storage_bucket": "learningfirebasesach.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:591831100692:android:ddc6d8ec0b7e28b6cf6601",
+        "android_client_info": {
+          "package_name": "com.gmail.sachinbasnet971"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXnuMg0htTUsGBaC128Zb31R8WoM6dCxo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
