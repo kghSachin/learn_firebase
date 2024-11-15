@@ -3,8 +3,13 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../constants/svg_strings.dart';
 
-class LogInForm extends StatelessWidget {
-  const LogInForm({super.key});
+const authOutlineInputBorder = OutlineInputBorder(
+  borderSide: BorderSide(color: Color(0xFF757575)),
+  borderRadius: BorderRadius.all(Radius.circular(100)),
+);
+
+class ForgotPasswordForm extends StatelessWidget {
+  const ForgotPasswordForm({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +19,6 @@ class LogInForm extends StatelessWidget {
           TextFormField(
             onSaved: (email) {},
             onChanged: (email) {},
-            textInputAction: TextInputAction.next,
             decoration: InputDecoration(
                 hintText: "Enter your email",
                 labelText: "Email",
@@ -32,31 +36,7 @@ class LogInForm extends StatelessWidget {
                 focusedBorder: authOutlineInputBorder.copyWith(
                     borderSide: const BorderSide(color: Color(0xFFFF7643)))),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 24),
-            child: TextFormField(
-              onSaved: (password) {},
-              onChanged: (password) {},
-              obscureText: true,
-              decoration: InputDecoration(
-                  hintText: "Enter your password",
-                  labelText: "Password",
-                  floatingLabelBehavior: FloatingLabelBehavior.always,
-                  hintStyle: const TextStyle(color: Color(0xFF757575)),
-                  contentPadding: const EdgeInsets.symmetric(
-                    horizontal: 24,
-                    vertical: 16,
-                  ),
-                  suffix: SvgPicture.string(
-                    lockIcon,
-                  ),
-                  border: authOutlineInputBorder,
-                  enabledBorder: authOutlineInputBorder,
-                  focusedBorder: authOutlineInputBorder.copyWith(
-                      borderSide: const BorderSide(color: Color(0xFFFF7643)))),
-            ),
-          ),
-          const SizedBox(height: 8),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.1),
           ElevatedButton(
             onPressed: () {},
             style: ElevatedButton.styleFrom(
@@ -75,8 +55,3 @@ class LogInForm extends StatelessWidget {
     );
   }
 }
-
-const authOutlineInputBorder = OutlineInputBorder(
-  borderSide: BorderSide(color: Color(0xFF757575)),
-  borderRadius: BorderRadius.all(Radius.circular(100)),
-);
