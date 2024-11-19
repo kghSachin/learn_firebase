@@ -10,11 +10,6 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: const Text("Sign Up"),
-      ),
       body: SafeArea(
         child: SizedBox(
           width: double.infinity,
@@ -80,7 +75,3 @@ class RegisterPage extends StatelessWidget {
     );
   }
 }
-
-
-
-

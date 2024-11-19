@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:learn_firebase3/features/authentication/view/forgot_password.dart';
 import 'package:learn_firebase3/features/authentication/view/login_page.dart';
 import 'package:learn_firebase3/features/authentication/view/register_page.dart';
+import 'package:learn_firebase3/features/home/view/home_page.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class MainPage extends ConsumerStatefulWidget {
@@ -28,6 +29,7 @@ class _MainPageState extends ConsumerState<MainPage> {
 
   List<Widget> _buildScreens() {
     return const [
+      HomePage(),
       LoginPage(),
       RegisterPage(),
       ForgotPasswordPage(),
@@ -39,19 +41,25 @@ class _MainPageState extends ConsumerState<MainPage> {
       PersistentBottomNavBarItem(
         icon: const Icon(Icons.home),
         title: "Home",
-        activeColorPrimary: Colors.blue,
+        activeColorPrimary: const Color(0xFFE97451),
         inactiveColorPrimary: Colors.grey,
       ),
       PersistentBottomNavBarItem(
         icon: const Icon(Icons.search),
         title: "Search",
-        activeColorPrimary: Colors.blue,
+        activeColorPrimary: const Color(0xFFE97451),
         inactiveColorPrimary: Colors.grey,
       ),
       PersistentBottomNavBarItem(
         icon: const Icon(Icons.person),
         title: "Profile",
-        activeColorPrimary: Colors.blue,
+        activeColorPrimary: const Color(0xFFE97451),
+        inactiveColorPrimary: Colors.grey,
+      ),
+      PersistentBottomNavBarItem(
+        icon: const Icon(Icons.person),
+        title: "account",
+        activeColorPrimary: const Color(0xFFE97451),
         inactiveColorPrimary: Colors.grey,
       ),
     ];
@@ -64,7 +72,13 @@ class _MainPageState extends ConsumerState<MainPage> {
       controller: _controller,
       screens: _buildScreens(),
       items: _navBarsItems(),
-      navBarStyle: NavBarStyle.style3,
+      navBarStyle: NavBarStyle.style9,
+      decoration: const NavBarDecoration(
+        boxShadow: [BoxShadow(blurRadius: 0.5)],
+        border:
+            BorderDirectional(top: BorderSide(color: Colors.grey, width: 0.5)),
+        colorBehindNavBar: Colors.white,
+      ),
     );
   }
 }

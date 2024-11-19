@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:learn_firebase3/features/authentication/view/register_page.dart';
+import 'package:learn_firebase3/features/home/main_page.dart';
 import 'package:learn_firebase3/res/theme/app_theme.dart';
 
 import 'features/authentication/view/login_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Rating App',
       theme: AppTheme.myTheme,
-      home: LoginPage(),
+      home: const MainPage(),
     );
   }
 }
