@@ -27,6 +27,16 @@ class AppTheme {
           onTertiary: Colors.white, // Text on success
           outline: Color(0xFFBDBDBD), // Light Gray for borders or outlines
         ),
+        listTileTheme: ListTileThemeData(
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+          horizontalTitleGap: 16,
+          minLeadingWidth: 0,
+          tileColor: Colors.grey.shade100,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
         inputDecorationTheme: InputDecorationTheme(
           border: _border,
           contentPadding: const EdgeInsets.symmetric(

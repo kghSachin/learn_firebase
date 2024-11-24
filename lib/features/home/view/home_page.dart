@@ -1,8 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:learn_firebase3/core/utils/cached_network_image.dart';
+import 'package:learn_firebase3/features/home/view/widgets/question_card.dart';
+import 'package:learn_firebase3/features/home/view/widgets/test_tile.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomePage extends ConsumerStatefulWidget {
@@ -19,21 +19,30 @@ class _HomePageState extends ConsumerState<HomePage> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 20,
-              ),
-              const UserInfoContainer(),
-              const SizedBox(
-                height: 24,
-              ),
-              NeomorphsSearchBar(controller: TextEditingController()),
-              const SizedBox(
-                height: 24,
-              ),
-              CarouselWidget()
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 20,
+                ),
+                const UserInfoContainer(),
+                const SizedBox(
+                  height: 24,
+                ),
+                NeomorphsSearchBar(controller: TextEditingController()),
+                const SizedBox(
+                  height: 24,
+                ),
+                CarouselWidget(),
+                SizedBox(
+                  height: 24,
+                ),
+                TestTile(),
+                SizedBox(
+                  height: 12,
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -69,55 +78,40 @@ class _CarouselWidgetState extends State<CarouselWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(
-          height: 200,
-          child: Stack(
-            alignment: Alignment.center,
+    return SizedBox(
+      height: 200,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          PageView(
+            controller: _pageController,
             children: [
-              PageView(
-                controller: _pageController,
-                children: [
-                  ...List.generate(5, (index) {
-                    return const FractionallySizedBox(
-                      widthFactor: 0.95,
-                      child: CachedNetworkImageWrapper(
-                        imageUrl:
-                            "https://thypix.com/wp-content/uploads/2018/05/Sommerlandschaft-Bilder-30.jpg",
-                      ),
-                    );
-                  }),
-                ],
-              ),
-              // Positioned(
-              //   bottom: 8,
-              //   child: SmoothPageIndicator(
-              //     controller: _pageController,
-              //     count: 4,
-              //     effect: const ExpandingDotsEffect(
-              //       dotHeight: 8,
-              //       activeDotColor: Colors.orange,
-              //       dotColor: Colors.grey,
-              //     ),
-              //   ),
-              // ),
+              ...List.generate(5, (index) {
+                return const FractionallySizedBox(
+                  widthFactor: 0.95,
+                  child: CachedNetworkImageWrapper(
+                    imageUrl:
+                        "https://thypix.com/wp-content/uploads/2018/05/Sommerlandschaft-Bilder-30.jpg",
+                  ),
+                );
+              }),
             ],
           ),
-        ),
-        const SizedBox(
-          height: 4,
-        ),
-        SmoothPageIndicator(
-          controller: _pageController,
-          count: 4,
-          effect: const ExpandingDotsEffect(
-            dotHeight: 8,
-            activeDotColor: Colors.orange,
-            dotColor: Colors.grey,
+          Positioned(
+            bottom: 8,
+            child: SmoothPageIndicator(
+              controller: _pageController,
+              count: 4,
+              effect: const ExpandingDotsEffect(
+                dotHeight: 8,
+                dotWidth: 10,
+                activeDotColor: Colors.orange,
+                dotColor: Colors.white,
+              ),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
