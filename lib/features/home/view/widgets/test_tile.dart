@@ -8,31 +8,94 @@ class TestTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return ListTile(
-      onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => const TestPage(),
+    return Container(
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.2),
+            offset: const Offset(0, 4),
+            blurRadius: 12,
           ),
-        );
-      },
-      leading: const CachedNetworkImageWrapper(
-        imageUrl:
-            "https://thypix.com/wp-content/uploads/2018/05/Sommerlandschaft-Bilder-30.jpg",
-        height: 150,
-        width: 80,
+        ],
       ),
-      title: const Text("Mock Test Series "),
-      subtitle: RichText(
-          text: TextSpan(children: [
-        TextSpan(text: "Quiz", style: Theme.of(context).textTheme.bodyMedium),
-        TextSpan(text: "  |  ", style: Theme.of(context).textTheme.bodyMedium),
-        TextSpan(
-            text: "10 questions",
-            style: Theme.of(context).textTheme.bodyMedium),
-      ])),
-      trailing: const Icon(Icons.arrow_forward_ios),
-      splashColor: Colors.blueGrey.shade100,
+      child: Material(
+        child: InkWell(
+          splashColor: Colors.blueGrey.shade100,
+          radius: 16,
+          onTap: () {
+            print("clicked");
+          },
+          child: Row(
+            children: [
+              // Leading Image with Rounded Corners
+              ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: CachedNetworkImageWrapper(
+                  imageUrl:
+                      "https://thypix.com/wp-content/uploads/2018/05/Sommerlandschaft-Bilder-30.jpg",
+                  height: 80,
+                  width: 80,
+                ),
+              ),
+              const SizedBox(width: 16), // Space between image and text
+              // Text Content
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Science Class 10",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blue.shade900,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    RichText(
+                      text: TextSpan(
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                              fontSize: 14,
+                            ),
+                        children: [
+                          TextSpan(
+                            text: "Quiz",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.grey.shade600,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "  |  ",
+                            style: TextStyle(color: Colors.grey.shade400),
+                          ),
+                          TextSpan(
+                            text: "10 questions",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              color: Colors.green.shade600,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 8), // Space between text and trailing icon
+              // Trailing Icon
+              Icon(
+                Icons.arrow_forward_ios,
+                size: 20,
+                color: Colors.grey.shade500,
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:learn_firebase3/core/utils/cached_network_image.dart';
-import 'package:learn_firebase3/features/home/view/widgets/question_card.dart';
 import 'package:learn_firebase3/features/home/view/widgets/test_tile.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -29,16 +29,124 @@ class _HomePageState extends ConsumerState<HomePage> {
                 const SizedBox(
                   height: 24,
                 ),
-                NeomorphsSearchBar(controller: TextEditingController()),
+                Row(children: [
+                  Expanded(
+                      child: Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white,
+                      border: Border.all(
+                        color: Colors.black,
+                        width: 1,
+                      ),
+                    ),
+                    child: const Row(children: [
+                      Icon(
+                        Icons.widgets_rounded,
+                        color: Colors.grey,
+                      ),
+                      SizedBox(
+                        width: 6,
+                      ),
+                      Text(
+                        "Learn & Explore ",
+                        textAlign: TextAlign.center,
+                      ),
+                    ]),
+                  )),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  Expanded(
+                    child: Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.white,
+                        border: Border.all(
+                          color: Colors.black,
+                          width: 1,
+                        ),
+                      ),
+                      child: const Row(children: [
+                        Icon(
+                          Icons.book,
+                          color: Colors.grey,
+                        ),
+                        SizedBox(
+                          width: 6,
+                        ),
+                        Text(
+                          "Explore Courses ",
+                          textAlign: TextAlign.center,
+                        ),
+                      ]),
+                    ),
+                  ),
+                ]),
                 const SizedBox(
                   height: 24,
                 ),
-                CarouselWidget(),
-                SizedBox(
+                const CarouselWidget(),
+                const SizedBox(
                   height: 24,
                 ),
-                TestTile(),
+                Row(
+                  children: [
+                    Text(
+                      "My Courses",
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
+                    ),
+                    const Spacer(),
+                    const Icon(Icons.menu),
+                  ],
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
                 SizedBox(
+                  height: 30,
+                  child: ListView.separated(
+                    separatorBuilder: (context, index) {
+                      return const SizedBox(
+                        width: 8,
+                      );
+                    },
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 20,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        height: 30,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 4),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(
+                                color: index == 0
+                                    ? Colors.blueGrey
+                                    : Colors.grey)),
+                        child: Center(
+                          child: Text(
+                            "Class $index",
+                            style: TextStyle(
+                              color: index == 0 ? Colors.black : Colors.grey,
+                            ),
+                            textAlign: TextAlign.center,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                const TestTile(),
+                const SizedBox(
                   height: 12,
                 ),
               ],
