@@ -1,4 +1,4 @@
-package com.gmail.sachinbasnet971.learn_firebase3
+package com.gmail.sachinbasnet971
 
 import io.flutter.embedding.android.FlutterActivity
 
